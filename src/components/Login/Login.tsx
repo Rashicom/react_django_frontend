@@ -24,6 +24,8 @@ function Login() {
         // checking the responce
         if (login_request.status == 200) {
             // store tocken
+            console.log(data.access)
+            localStorage.setItem('authTokens', JSON.stringify(data.access))
             navigate("/home")
         }
         

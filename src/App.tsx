@@ -8,6 +8,8 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import NotFound from './components/Common/NotFound/NotFound';
+import Admin_adduser from './components/Admin_adduser/Admin_adduser';
+import Admin_edituser from './components/Admin_edituser/admin_edituser';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path='home' element={<Home/>} />
         <Route path='admin_login' element={<Admin_login/>} />
         <Route path='admin_home' element={<Admin_home/>} />
+        <Route path='admin_adduser' element={<Admin_adduser/>}/>
+        <Route path='admin_edituser' element={<Admin_edituser/>}/>
       </Routes>
 
 

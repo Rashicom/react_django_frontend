@@ -1,7 +1,39 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import './Home.css'
+import '../../Axios'
+
+
 
 function Home() {
+
+  // state for user details
+  const [user,setUser] = useState({username:''})
+
+  useEffect(()=> {
+    let token = localStorage.getItem('authTokens')
+
+    // only send axios if the tocken is exist in the browser
+    // otherwise typescript will rise the error
+    if (token) {
+      axios({
+        url:'http://127.0.0.1:8000/api/home/',
+        headers: {
+          Authorization: "Bearer " + JSON.parse(token)
+        }
+      })
+      .then((response)=> {
+        console.log(response.data.username)
+        setUser({username:response.data.username})
+        
+        
+      })
+    }
+
+  },[])
+
+
+
     return (
 
       <div className='px-3'>
@@ -24,7 +56,7 @@ function Home() {
 
           <div className='col-md-9'>
             <div>
-              <h1>First Name</h1>
+              <h1>{user.username}</h1>
               <hr />
               <div className='profilepicture'>
                 <a href="#">
